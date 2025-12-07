@@ -1,16 +1,16 @@
 <script setup>
-import Layout from "./Components/Layout.vue"
 
 const props = defineProps( {
     time : String
 })
 
-defineOptions({
-    layout : Layout
-})
 </script>
 
 <template>
+    <Head>
+        <title>Users</title>
+        <meta type="description" content="Description about Users">
+    </Head>
     <h1 class="text-4xl">Users</h1>
     <div style="margin-top: 800px">
         The Time is {{time}}.

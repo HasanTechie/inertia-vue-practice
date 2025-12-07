@@ -1,16 +1,16 @@
 <script setup>
-import Layout from "./Components/Layout.vue"
-
 const props = defineProps({
     name: String,
     frameworks: Array
 });
-defineOptions({
-    layout : Layout
-})
+
 </script>
 
 <template>
+    <Head>
+        <title>Home</title>
+        <meta name="description" content="Home page meta description" />
+    </Head>
     <h1 class="text-4xl">Hello</h1>
         Hello World {{ props.name }}
 </template>
