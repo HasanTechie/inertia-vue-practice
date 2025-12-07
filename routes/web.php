@@ -13,7 +13,7 @@ Route::get('/', function () {
 
 Route::get('/users', function () {
     return Inertia::render('Users', [
-        'time' => now()->toString()
+        'users' => \App\Models\User::select('name')->get()
     ]);
 });
 
