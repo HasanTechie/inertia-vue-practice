@@ -1,11 +1,13 @@
 <script setup>
+import Layout from "./Components/Layout.vue"
 
-import Nav from "./Components/Nav.vue";
+defineOptions({
+    layout : Layout
+})
 </script>
 
 <template>
     <h1 class="text-4xl">Settings</h1>
-    <Nav />
 </template>
 
 <style scoped>
