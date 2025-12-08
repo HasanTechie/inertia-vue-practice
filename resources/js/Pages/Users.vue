@@ -1,7 +1,9 @@
 <script setup>
 
-const props = defineProps( {
-    users : Object
+import Pagination from "../Components/Pagination.vue";
+
+const props = defineProps({
+    users: Object
 })
 
 </script>
@@ -43,13 +45,9 @@ const props = defineProps( {
             </div>
         </div>
     </div>
-    <div class="mt-6">
-        <template v-for="link in users.links">
-            <Link v-if="link.url" :href="link.url" v-html="link.label" />
-            <span v-else v-html="link.label"></span>
-        </template>
+    <div class="mt-6 flex justify-center">
+    <Pagination :links="users.links" />
     </div>
-
 </template>
 
 <style scoped>
