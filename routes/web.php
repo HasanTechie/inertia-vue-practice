@@ -12,8 +12,10 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
+
+//    dd(\App\Models\User::select('id','name')->paginate(10));
     return Inertia::render('Users', [
-        'users' => \App\Models\User::select('name')->get()
+        'users' => \App\Models\User::select('id','name')->paginate(10)
     ]);
 });
 
