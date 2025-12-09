@@ -1,8 +1,11 @@
 <script setup>
 defineProps({
-    links : Array,
-    required : true
+    links: {
+        type: Array,
+        required: true
+    }
 })
+
 </script>
 
 <template>
@@ -12,7 +15,12 @@ defineProps({
         :href="link.url"
         v-html="link.label"
         class="px-1"
-        :class="link.url ? 'text-blue-300' : 'text-gray-500'"
+        :class="{
+            'text-blue-400' : link.url,
+            'text-gray-400' : !link.url,
+            'font-bold' : link.active
+        }"
+        :preserve-scroll="link.url"
     />
 </template>
 

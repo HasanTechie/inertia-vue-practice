@@ -1,9 +1,25 @@
 <script setup>
 
-import Pagination from "../Components/Pagination.vue";
+import Pagination from "../Components/Pagination.vue"
+import {ref, watch} from "vue"
+import {router} from "@inertiajs/vue3"
 
 const props = defineProps({
-    users: Object
+    users: Object,
+    filters: Object
+})
+
+let search = ref(props.filters.search)
+
+watch(search, value => {
+    router.get('/users',
+        {
+            search: value
+        },
+        {
+            preserveState: true,
+            replace: true
+        })
 })
 
 </script>
@@ -13,9 +29,10 @@ const props = defineProps({
         <title>Users</title>
         <meta type="description" content="Description about Users">
     </Head>
-    <h1 class="text-4xl">Users</h1>
-
-
+    <div class="flex justify-between mt-2">
+        <h1 class="text-3xl">Users</h1>
+        <input v-model="search" type="text" placeholder="Search..." class="border px-2 rounded-xl">
+    </div>
     <div class="flex flex-col mt-2">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -46,7 +63,7 @@ const props = defineProps({
         </div>
     </div>
     <div class="mt-6 flex justify-center">
-    <Pagination :links="users.links" />
+        <Pagination :links="users.links"/>
     </div>
 </template>
 
